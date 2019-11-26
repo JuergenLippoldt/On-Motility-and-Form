@@ -293,47 +293,47 @@ ciplot_steffen(xDataOut(xDataOut>7), yDataOut(xDataOut>7)-yCI(xDataOut>7),yDataO
 
 legend([p1 p3],{'shNT-2 mg movie 1','CDH1-2 mg movie 1'})
 
- NG2_all =[];
- NG2_core=[];
- NG6_core=[];
- CD2_core=[];
- CD6_core=[];
- NG2_expanse=[];
- NG6_expanse=[];
- CD2_expanse=[];
- CD6_expanse=[];
- NG2_edge=[];
- NG6_edge=[];
- CD2_edge=[];
- CD6_edge=[];
+ NG2_all2 =[];
+ NG2_core2=[];
+ NG6_core2=[];
+ CD2_core2=[];
+ CD6_core2=[];
+ NG2_expanse2=[];
+ NG6_expanse2=[];
+ CD2_expanse2=[];
+ CD6_expanse2=[];
+ NG2_edge2=[];
+ NG6_edge2=[];
+ CD2_edge2=[];
+ CD6_edge2=[];
  
 for trackys=1:length(track_files) 
 trackname=track_files(trackys).name;
 if contains( trackname,'NT')
     if contains( trackname,'2_mg_ml') || contains( trackname,'2 mg')
         color=[65,171,93]/255;
-        NG2_all    =[NG2_all,     spatial_velocity_corr{trackys,2}];
-        NG2_core   =[NG2_core,    spatial_velocity_corr{trackys,4}];
-        NG2_expanse=[NG2_expanse, spatial_velocity_corr{trackys,6}];
-        NG2_edge   =[NG2_edge,    spatial_velocity_corr{trackys,8}];     
+        NG2_all2    =[NG2_all2,     spatial_velocity_corr{trackys,1}];
+        NG2_core2   =[NG2_core2,    spatial_velocity_corr{trackys,3}];
+        NG2_expanse2=[NG2_expanse2, spatial_velocity_corr{trackys,5}];
+        NG2_edge2   =[NG2_edge2,    spatial_velocity_corr{trackys,7}];     
     elseif contains( trackname,'6_mg_ml') || contains( trackname,'6 mg')
         color=[0,109,44]/255;
-        NG6_core   =[NG6_core,    spatial_velocity_corr{trackys,4}];
-        NG6_expanse=[NG6_expanse, spatial_velocity_corr{trackys,6}];
-        NG6_edge   =[NG6_edge,    spatial_velocity_corr{trackys,8}];   
+        NG6_core2   =[NG6_core2,    spatial_velocity_corr{trackys,3}];
+        NG6_expanse2=[NG6_expanse2, spatial_velocity_corr{trackys,5}];
+        NG6_edge2   =[NG6_edge2,    spatial_velocity_corr{trackys,7}];   
     end
     
 elseif  contains( trackname,'CDH')
 	if contains( trackname,'2_mg_ml') || contains( trackname,'2 mg')
         color=[33,113,181]/255;
-        CD2_core   =[CD2_core,    spatial_velocity_corr{trackys,4}];
-        CD2_expanse=[CD2_expanse, spatial_velocity_corr{trackys,6}];
-        CD2_edge   =[CD2_edge,    spatial_velocity_corr{trackys,8}]; 
+        CD2_core2   =[CD2_core2,    spatial_velocity_corr{trackys,3}];
+        CD2_expanse2=[CD2_expanse2, spatial_velocity_corr{trackys,5}];
+        CD2_edge2   =[CD2_edge2,    spatial_velocity_corr{trackys,7}]; 
 	elseif contains( trackname,'6_mg_ml') || contains( trackname,'6 mg')
         color=[8,48,107]/255;
-        CD6_core   =[CD6_core,    spatial_velocity_corr{trackys,4}];
-        CD6_expanse=[CD6_expanse, spatial_velocity_corr{trackys,6}];
-        CD6_edge   =[CD6_edge,    spatial_velocity_corr{trackys,8}]; 
+        CD6_core2   =[CD6_core2,    spatial_velocity_corr{trackys,3}];
+        CD6_expanse2=[CD6_expanse2, spatial_velocity_corr{trackys,5}];
+        CD6_edge2   =[CD6_edge2,    spatial_velocity_corr{trackys,7}]; 
     end
 end
 end
@@ -350,26 +350,28 @@ s.EdgeColor = 'black';
 end
 
 if false %% statistic 
-    [xDataOut, yDataOut_CD2_edge, weight_CD2_edge] = SteffenSmoothCI_total_weight(CD2_edge(2,:),CD2_edge(1,:),3,50);
-    [xDataOut, yDataOut_CD6_edge, weight_CD6_edge] = SteffenSmoothCI_total_weight(CD6_edge(2,:),CD6_edge(1,:),3,50);
-    [xDataOut, yDataOut_CD2_expanse, weight_CD2_expanse] = SteffenSmoothCI_total_weight(CD2_expanse(2,:),CD2_expanse(1,:),3,50);
-    [xDataOut, yDataOut_CD6_expanse, weight_CD6_expanse] = SteffenSmoothCI_total_weight(CD6_expanse(2,:),CD6_expanse(1,:),3,50);
-    [xDataOut, yDataOut_NG6_edge, weight_NG6_edge] = SteffenSmoothCI_total_weight(NG6_edge(2,:),NG6_edge(1,:),3,50);
-    [xDataOut, yDataOut_NG6_expanse, weight_NG6_expanse] = SteffenSmoothCI_total_weight(NG6_expanse(2,:),NG6_expanse(1,:),3,50);
-    [xDataOut, yDataOut_NG2_edge, weight_NG2_edge] = SteffenSmoothCI_total_weight(NG2_edge(2,:),NG2_edge(1,:),3,50);
-    [xDataOut, yDataOut_NG2_expanse, weight_NG2_expanse] = SteffenSmoothCI_total_weight(NG2_expanse(2,:),NG2_expanse(1,:),3,50);
+    [xDataOut, yDataOut_CD2_edge, weight_CD2_edge] = SteffenSmoothCI_total_weight(CD2_edge2(2,:),CD2_edge2(1,:),3,50);
+    [xDataOut, yDataOut_CD6_edge, weight_CD6_edge] = SteffenSmoothCI_total_weight(CD6_edge2(2,:),CD6_edge2(1,:),3,50);
+    [xDataOut, yDataOut_CD2_expanse, weight_CD2_expanse] = SteffenSmoothCI_total_weight(CD2_expanse2(2,:),CD2_expanse2(1,:),3,50);
+    [xDataOut, yDataOut_CD6_expanse, weight_CD6_expanse] = SteffenSmoothCI_total_weight(CD6_expanse2(2,:),CD6_expanse2(1,:),3,50);
+    [xDataOut, yDataOut_NG6_edge, weight_NG6_edge] = SteffenSmoothCI_total_weight(NG6_edge2(2,:),NG6_edge2(1,:),3,50);
+    [xDataOut, yDataOut_NG6_expanse, weight_NG6_expanse] = SteffenSmoothCI_total_weight(NG6_expanse2(2,:),NG6_expanse2(1,:),3,50);
+    [xDataOut, yDataOut_NG2_edge, weight_NG2_edge] = SteffenSmoothCI_total_weight(NG2_edge2(2,:),NG2_edge2(1,:),3,50);
+    [xDataOut, yDataOut_NG2_expanse, weight_NG2_expanse] = SteffenSmoothCI_total_weight(NG2_expanse2(2,:),NG2_expanse2(1,:),3,50);
     
     for i=9:50
-        p_CD2_edge_CD6_edge(i-8) = compare_correlation_coefficients(yDataOut_CD2_edge(i),yDataOut_CD6_edge(i),weight_CD2_edge(i)/10,weight_CD6_edge(i)/10);
-        p_NT6_edge_CD6_edge(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_CD6_edge(i),weight_NG6_edge(i)/10,weight_CD6_edge(i)/10);
-        p_CD2_mid_CD6_mid(i-8) = compare_correlation_coefficients(yDataOut_CD2_expanse(i),yDataOut_CD6_expanse(i),weight_CD2_expanse(i)/10,weight_CD6_expanse(i)/10);
-        p_NT6_mid_CD6_mid(i-8) = compare_correlation_coefficients(yDataOut_NG6_expanse(i),yDataOut_CD6_expanse(i),weight_NG6_expanse(i)/10,weight_CD6_expanse(i)/10);
-        p_CD2_edge_CD6_mid(i-8) = compare_correlation_coefficients(yDataOut_CD2_edge(i),yDataOut_CD6_expanse(i),weight_CD2_edge(i)/10,weight_CD6_expanse(i)/10);
-        p_NT6_edge_CD6_mid(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_CD6_expanse(i),weight_NG6_edge(i)/10,weight_CD6_expanse(i)/10);
-        p_NT6_edge_NT2_mid(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_NG2_expanse(i),weight_NG6_edge(i)/10,weight_NG2_expanse(i)/10);
-        p_NT6_edge_NT2_edge(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_NG2_edge(i),weight_NG6_edge(i)/10,weight_NG2_edge(i)/10);
-        p_NT6_mid_NT2_mid(i-8) = compare_correlation_coefficients(yDataOut_NG6_expanse(i),yDataOut_NG2_expanse(i),weight_NG6_expanse(i)/10,weight_NG2_expanse(i)/10);
-        p_CD2_mid_CD6_mid(i-8) = compare_correlation_coefficients(yDataOut_CD6_expanse(i),yDataOut_CD2_expanse(i),weight_CD6_expanse(i)/10,weight_CD2_expanse(i)/10);
+        p_CD6_mid_CD6_edge_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_CD6_expanse(i),yDataOut_CD6_edge(i),weight_CD6_expanse(i)/5,weight_CD6_edge(i)/5);
+
+        p_CD2_edge_CD6_edge_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_CD2_edge(i),yDataOut_CD6_edge(i),weight_CD2_edge(i)/5,weight_CD6_edge(i)/5);
+        p_NT6_edge_CD6_edge_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_CD6_edge(i),weight_NG6_edge(i)/5,weight_CD6_edge(i)/5);
+        p_CD2_mid_CD6_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_CD2_expanse(i),yDataOut_CD6_expanse(i),weight_CD2_expanse(i)/5,weight_CD6_expanse(i)/5);
+        p_NT6_mid_CD6_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_expanse(i),yDataOut_CD6_expanse(i),weight_NG6_expanse(i)/5,weight_CD6_expanse(i)/5);
+        p_CD2_edge_CD6_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_CD2_edge(i),yDataOut_CD6_expanse(i),weight_CD2_edge(i)/5,weight_CD6_expanse(i)/5);
+        p_NT6_edge_CD6_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_CD6_expanse(i),weight_NG6_edge(i)/5,weight_CD6_expanse(i)/5);
+        p_NT6_edge_NT2_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_NG2_expanse(i),weight_NG6_edge(i)/5,weight_NG2_expanse(i)/5);
+        p_NT6_edge_NT2_edge_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_edge(i),yDataOut_NG2_edge(i),weight_NG6_edge(i)/5,weight_NG2_edge(i)/5);
+        p_NT6_mid_NT2_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_NG6_expanse(i),yDataOut_NG2_expanse(i),weight_NG6_expanse(i)/5,weight_NG2_expanse(i)/5);
+        p_CD2_mid_CD6_mid_cor_vec(i-8) = compare_correlation_coefficients(yDataOut_CD6_expanse(i),yDataOut_CD2_expanse(i),weight_CD6_expanse(i)/5,weight_CD2_expanse(i)/5);
         
     end 
 end

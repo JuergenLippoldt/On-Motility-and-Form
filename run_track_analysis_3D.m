@@ -357,6 +357,9 @@ s.EdgeColor = 'black';
 
 
 if false %% statistic 
+    [xDataOut, yDataOut_CD_invivo, weight_CD_invivo] = SteffenSmoothCI_total_weight(CD_all(2,:),CD_all(1,:),3,50);    
+    [xDataOut, yDataOut_NG_invivo, weight_NG_invivo] = SteffenSmoothCI_total_weight(NG_all(2,:),NG_all(1,:),3,50);
+    
     [xDataOut, yDataOut_CD2_edge, weight_CD2_edge] = SteffenSmoothCI_total_weight(CD2_edge(2,:),CD2_edge(1,:),3,50);
     [xDataOut, yDataOut_CD6_edge, weight_CD6_edge] = SteffenSmoothCI_total_weight(CD6_edge(2,:),CD6_edge(1,:),3,50);
     [xDataOut, yDataOut_CD2_expanse, weight_CD2_expanse] = SteffenSmoothCI_total_weight(CD2_expanse(2,:),CD2_expanse(1,:),3,50);
@@ -370,7 +373,9 @@ if false %% statistic
     [xDataOut, yDataOut_CD_or_all, weight_CD_or_all] = SteffenSmoothCI_total_weight(CD_or_all(2,:),CD_or_all(1,:),3,50);    
     
     for i=9:50
-        p_NT_invivo_CD_invivo(i-8) = compare_correlation_coefficients(yDataOut_NG_or_all(i),yDataOut_CD_or_all(i),weight_NG_or_all(i)/3,weight_CD_or_all(i)/3);
+        p_NT_invivo_CD_invivo(i-8) = compare_correlation_coefficients(yDataOut_NG_invivo(i),yDataOut_CD_invivo(i),weight_NG_invivo(i)/2.5,weight_CD_invivo(i)/2.5);
+
+        p_NT_or_invivo_CD_invivo(i-8) = compare_correlation_coefficients(yDataOut_NG_or_all(i),yDataOut_CD_or_all(i),weight_NG_or_all(i)/2.5,weight_CD_or_all(i)/2.5);
         
         
         
